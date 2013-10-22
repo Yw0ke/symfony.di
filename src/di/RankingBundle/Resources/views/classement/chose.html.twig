@@ -1,0 +1,27 @@
+{% block body -%}
+	<h2>Choisissez une épreuve</h2>
+	
+	<div id="chose">
+		{% for entity in entities %}
+		<div class="epr span4">
+			{% set nom = entity.nom %}
+			
+			{% if full[nom] == true %}
+				<span class="label label-success">Résultats déjà enregistré :</span><a href="{{ path('classement_chosen', { 'idEpreuve': entity.id }) }}">{{ entity.nom }}</a>
+			{% else %}
+				<span class="label label-error">Résultats vide :</span><a href="{{ path('classement_chosen', { 'idEpreuve': entity.id }) }}">{{ entity.nom }}</a>
+			{% endif %}
+		</div>
+		{% endfor %}
+		
+		
+	    <ul>
+	        <li>
+	            <a href="{{ path('epreuve_new') }}">
+	                Ajouter une nouvelle épreuve
+	            </a>
+	        </li>
+	    </ul>
+	</div>
+    
+{% endblock %}

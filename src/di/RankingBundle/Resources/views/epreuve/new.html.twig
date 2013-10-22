@@ -1,0 +1,15 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}
+    <h1>epreuve creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('epreuve') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

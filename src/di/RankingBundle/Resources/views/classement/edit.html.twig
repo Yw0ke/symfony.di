@@ -1,0 +1,17 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}
+    <h1>classement edit</h1>
+    <form class="well" action="{{ path('classement_edit', { 'idEpreuve': epreuve.id }) }}" method="post" {{ form_enctype(form) }}>
+    
+		{{ form(form) }}
+		
+	</form>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('di_dashboard') }}">
+            Revenir au Dashboard
+        </a>
+    </li>
+</ul>
+{% endblock %}

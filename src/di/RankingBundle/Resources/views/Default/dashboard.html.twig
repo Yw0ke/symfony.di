@@ -1,0 +1,48 @@
+{% extends "::layout.html.twig" %}
+
+{% block menuAdmin %}
+	<div class="span3 sidebar">
+		<ul class="nav nav-list admin-menu affix">
+		
+			<li>
+				<a href="{{ path('classement') }}">Classement</a>
+			</li>
+			<li>
+				<a href="{{ path('epreuve') }}">Epreuves</a>
+			</li>
+			<li>
+				<a href="{{ path('equipe') }}">Equipes</a>
+			</li>
+		</ul>
+	</div>
+{% endblock %}
+
+{% block body %}
+
+	<div class="ajxrfrsh">
+		<p>Sélectionnez une catégorie à administrer.</p>
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+	<script type="text/javascript">
+	$( ".admin-menu a" ).click(function( event ) {
+		
+		event.preventDefault();
+		var href = $(this).attr("href");
+		
+		$.ajax({
+			type: "POST",
+		    url: href,
+		    data: null,
+		    cache: false,
+		    success: function(data){
+		       $('.ajxrfrsh').html(data);
+		    }
+		});
+	});
+	</script>
+
+{% endblock %}
